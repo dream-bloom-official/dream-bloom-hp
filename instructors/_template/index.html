@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+  講師個別ページ テンプレート
+  使い方:
+  1. このフォルダ(_template)を丸ごとコピーして、
+     instructors/[講師スラッグ]/ という名前にする（例: instructors/yamada-hanako/）
+  2. 下の [ ] で囲まれた部分を、その講師の情報に書き換える
+  3. instructors/index.html の instructors 配列に、このページへのリンクを1項目追加する
+-->
+<title>[講師名] | Dream Bloom認定講師</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">Dream Bloom</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../../courses/index.html">資格取得講座</a></li>
+        <li><a href="https://dream-bloom.netlify.app/" target="_blank" rel="noopener">オンラインサロン</a></li>
+        <li><a href="../../index.html#marketing">マーケティング講座</a></li>
+        <li><a href="../../certification/index.html">認定講師制度</a></li>
+        <li><a href="../index.html">認定講師紹介</a></li>
+        <li><a href="../../about/index.html">理念</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" onclick="this.closest('.site-header').classList.toggle('nav-open')" aria-label="メニューを開く">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18M3 12h18M3 18h18" stroke="#2E2A24" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <img class="instructor-photo" style="width:120px;height:120px;margin:0 auto 18px;" src="photo.jpg" alt="[講師名]">
+    <div class="eyebrow" style="justify-content:center;display:flex;">[肩書き・例: Dream Bloom認定 HSP専門カウンセラー]</div>
+    <h1 style="font-size:28px;">[講師名]</h1>
+    <p class="lead">[一言プロフィール・キャッチコピーが入ります]</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="eyebrow center" style="justify-content:center;display:flex;">Profile</div>
+    <h2 class="section-title">プロフィール</h2>
+    <p class="lead" style="max-width:640px;">
+      [経歴・実績・大切にしていること等、詳しいプロフィール文がここに入ります。]
+    </p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap center">
+    <div class="eyebrow center" style="justify-content:center;display:flex;">SNS</div>
+    <h2 class="section-title">SNS</h2>
+    <div class="sns-row" style="justify-content:center;">
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">TikTok</a>
+      <a href="#" target="_blank" rel="noopener">YouTube</a>
+      <a href="#" target="_blank" rel="noopener">公式LINE</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="coming-soon">
+      <p class="lead" style="margin-bottom:20px;">[講師名]への依頼・お問い合わせはこちらから</p>
+      <div class="cta-center">
+        <!-- 依頼ボタンのリンク先は講師ごとに設定（フォーム／LINE等、後日決定） -->
+        <a class="cta-btn" href="#">この講師に依頼する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">Dream Bloom</a>
+    <div class="sns-row">
+      <a href="https://whnays3u.autosns.app/line" target="_blank" rel="noopener">公式LINE</a>
+      <a href="https://www.instagram.com/yukari_hsp?igsh=MWVzdm12b2xmYW96aA%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@yukari_hsp?_r=1&_t=ZS-98jpUmoWi17" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://youtube.com/@yukari_hsp?si=HbhXs6TEl4zDirAj" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <div class="sns-row" style="margin-top:2px;">
+      <a href="../../legal/index.html#privacy">プライバシーポリシー</a>
+      <a href="../../legal/index.html#tokushoho">特定商取引法に基づく表記</a>
+    </div>
+    <small>&copy; Dream Bloom</small>
+  </div>
+</footer>
+
+</body>
+</html>

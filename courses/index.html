@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>資格取得講座一覧 | Dream Bloom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Dream Bloom</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">資格取得講座</a></li>
+        <li><a href="https://dream-bloom.netlify.app/" target="_blank" rel="noopener">オンラインサロン</a></li>
+        <li><a href="../index.html#marketing">マーケティング講座</a></li>
+        <li><a href="../certification/index.html">認定講師制度</a></li>
+        <li><a href="../instructors/index.html">認定講師紹介</a></li>
+        <li><a href="../about/index.html">理念</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" onclick="this.closest('.site-header').classList.toggle('nav-open')" aria-label="メニューを開く">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18M3 12h18M3 18h18" stroke="#2E2A24" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <img class="hero-banner-img" src="../assets/img/photo-courses-hero.png" alt="">
+    <div class="eyebrow">Courses</div>
+    <h1>資格取得講座</h1>
+    <p class="lead">Dream Bloom認定の資格取得講座です。まずはHSP専門カウンセラーから、順次ラインナップを増やしていきます。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div id="course-list" class="item-grid"></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="photo-panel" style="background-image:url('../assets/img/photo-interior-1.png');">
+      <div class="panel-inner">
+        <div class="eyebrow">さらに学びたい方へ</div>
+        <h2 class="section-title" style="text-align:left;margin-bottom:16px;">資格取得のあと、次のステップへ</h2>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="ippo-plus/index.html" style="font-size:14px;font-weight:700;color:var(--rose-deep);text-decoration:none;background:#fff;border:1px solid var(--rose-soft);border-radius:100px;padding:10px 18px;">マーケティング講座（本講座）を見る →</a>
+          <a href="https://dream-bloom.netlify.app/" target="_blank" rel="noopener" style="font-size:14px;font-weight:700;color:var(--rose-deep);text-decoration:none;background:#fff;border:1px solid var(--rose-soft);border-radius:100px;padding:10px 18px;">オンラインサロンを見る →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Dream Bloom</a>
+    <div class="sns-row">
+      <a href="https://whnays3u.autosns.app/line" target="_blank" rel="noopener">公式LINE</a>
+      <a href="https://www.instagram.com/yukari_hsp?igsh=MWVzdm12b2xmYW96aA%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@yukari_hsp?_r=1&_t=ZS-98jpUmoWi17" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://youtube.com/@yukari_hsp?si=HbhXs6TEl4zDirAj" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <div class="sns-row" style="margin-top:2px;">
+      <a href="../legal/index.html#privacy">プライバシーポリシー</a>
+      <a href="../legal/index.html#tokushoho">特定商取引法に基づく表記</a>
+    </div>
+    <small>&copy; Dream Bloom</small>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   講座データ。新しい講座が開講したら、この配列に1項目
+   追加するだけでカードが自動的に増える。
+   status: "open"（開講中） or "soon"（準備中）
+   link  : 開講中の講座はLPのURL。準備中は "" でOK
+   ============================================================ */
+const courses = [
+  {
+    name: "HSP専門カウンセラー資格取得講座",
+    status: "open",
+    desc: "HSP・繊細な気質を持つ方に寄り添う専門知識を身につける講座です。",
+    link: "https://hsp-counselor.netlify.app/"
+  },
+  {
+    name: "心理カウンセラー資格取得講座",
+    status: "soon",
+    desc: "心理学の基礎からアドラー心理学まで、対人支援の土台を学ぶ講座です。",
+    link: ""
+  },
+  {
+    name: "カウンセリング・コーチング資格取得講座",
+    status: "soon",
+    desc: "傾聴と問いかけの技術で、相手の力を引き出すスキルを学びます。",
+    link: ""
+  },
+  {
+    name: "ビジネスコーチ講座",
+    status: "soon",
+    desc: "自分らしい働き方・稼ぎ方を、コーチングの視点から設計します。",
+    link: ""
+  },
+  {
+    name: "認定講師講座",
+    status: "soon",
+    desc: "Dream Bloom認定講師として、講座を開講できるようになる講座です。",
+    link: ""
+  }
+];
+
+const listEl = document.getElementById("course-list");
+listEl.innerHTML = courses.map(c => `
+  <div class="item-card">
+    <span class="badge ${c.status}">${c.status === "open" ? "開講中" : "準備中"}</span>
+    <h3>${c.name}</h3>
+    <p>${c.desc}</p>
+    ${c.status === "open"
+      ? `<a class="item-link" href="${c.link}" target="_blank" rel="noopener">詳しく見る・申し込む →</a>`
+      : `<span class="item-link disabled">近日公開予定</span>`
+    }
+  </div>
+`).join("");
+</script>
+
+</body>
+</html>
