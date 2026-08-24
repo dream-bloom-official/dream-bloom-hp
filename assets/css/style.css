@@ -92,9 +92,14 @@ nav.main-nav a:hover{color:var(--rose-deep);}
   content:"";position:absolute;inset:0;
   background:linear-gradient(90deg, var(--ivory) 0%, var(--ivory) 30%, rgba(250,246,239,.85) 50%, rgba(250,246,239,.35) 100%);
 }
+.hero-photo-mobile-img{display:none;}
 @media (max-width:700px){
-  .hero-photo::before{
-    background:linear-gradient(180deg, var(--ivory) 0%, var(--ivory) 62%, rgba(250,246,239,.9) 78%, rgba(250,246,239,.55) 100%);
+  .hero-photo{background-image:none !important;}
+  .hero-photo::before{display:none;}
+  .hero-photo-mobile-img{
+    display:block;width:100%;height:220px;object-fit:cover;
+    border-radius:var(--radius);margin:20px 0 4px;
+    box-shadow:0 14px 34px rgba(122,59,84,.18);
   }
 }
 .hero-photo .wrap{position:relative;z-index:1;}
@@ -144,7 +149,7 @@ nav.main-nav a:hover{color:var(--rose-deep);}
 }
 .offer-card h3{margin:6px 0 0;font-size:18px;}
 .offer-card p{margin:0;font-size:14px;color:var(--ink-soft);}
-.offer-card .go{margin-top:auto;font-size:13px;font-weight:700;color:var(--rose-deep);}
+.offer-card .go{margin-top:auto;font-size:13px;font-weight:700;color:var(--rose-deep);text-decoration:underline;text-underline-offset:3px;}
 .offer-card.sub-links{gap:12px;}
 .offer-card .sub-link-row{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
 .offer-card .sub-link-row a{
@@ -183,8 +188,27 @@ nav.main-nav a:hover{color:var(--rose-deep);}
 }
 .badge.open{background:var(--sage-soft);color:#a9600f;}
 .badge.soon{background:var(--ivory-deep);color:var(--ink-soft);border:1px solid var(--line);}
-.item-card .item-link{margin-top:6px;font-size:13px;font-weight:700;color:var(--rose-deep);text-decoration:none;}
+.item-card .item-link{margin-top:6px;font-size:13px;font-weight:700;color:var(--rose-deep);text-decoration:underline;text-underline-offset:3px;}
 .item-card .item-link.disabled{color:var(--ink-soft);pointer-events:none;}
+
+/* ---------- STEP LIST (体系立てた表示) ---------- */
+.step-list{display:flex;flex-direction:column;max-width:640px;margin:0 auto;}
+.step-item{display:flex;gap:18px;padding-bottom:28px;position:relative;}
+.step-item::before{
+  content:"";position:absolute;left:19px;top:42px;bottom:0;width:2px;
+  background:var(--line);
+}
+.step-item:last-child{padding-bottom:0;}
+.step-item:last-child::before{display:none;}
+.step-num{
+  width:40px;height:40px;border-radius:50%;flex:none;position:relative;z-index:1;
+  background:linear-gradient(135deg, var(--rose) 0%, var(--gold) 100%);
+  color:#fff;font-family:"Shippori Mincho",serif;font-weight:700;font-size:17px;
+  display:flex;align-items:center;justify-content:center;
+}
+.step-body{padding-top:6px;}
+.step-body h3{margin:0 0 6px;font-size:16px;}
+.step-body p{margin:0;font-size:13.5px;color:var(--ink-soft);}
 
 /* ---------- INSTRUCTOR AVATAR ---------- */
 .instructor-photo{
