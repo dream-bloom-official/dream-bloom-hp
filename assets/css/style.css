@@ -47,7 +47,7 @@ p.lead{font-size:15.5px;color:var(--ink-soft);max-width:560px;margin:0 auto;}
 }
 .site-header .wrap{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;max-width:1080px;}
 .brand{display:flex;align-items:center;gap:10px;font-family:"Shippori Mincho",serif;font-weight:700;font-size:17px;color:var(--ink);text-decoration:none;}
-.brand img.logo-header{height:24px;width:auto;object-fit:contain;flex:none;}
+.brand img.logo-header{height:28px;width:auto;object-fit:contain;flex:none;}
 .brand small{display:block;font-family:"Zen Kaku Gothic New",sans-serif;font-size:10px;font-weight:500;color:var(--ink-soft);letter-spacing:.08em;}
 footer.site-footer .brand{justify-content:center;}
 footer.site-footer img.logo-footer{height:28px;width:auto;display:block;margin:0 auto 12px;}
