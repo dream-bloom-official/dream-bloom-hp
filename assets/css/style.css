@@ -23,7 +23,9 @@ body{
   margin:0;background:var(--ivory);color:var(--ink);
   font-family:"Zen Kaku Gothic New",-apple-system,BlinkMacSystemFont,sans-serif;
   line-height:1.85;-webkit-font-smoothing:antialiased;
+  overflow-wrap:break-word;word-break:normal;line-break:strict;
 }
+h1,h2,h3,p,.lead{overflow-wrap:break-word;word-break:normal;line-break:strict;}
 h1,h2,h3,.serif{font-family:"Shippori Mincho",serif;}
 img{max-width:100%;display:block;}
 a{color:inherit;}
@@ -45,9 +47,12 @@ p.lead{font-size:15.5px;color:var(--ink-soft);max-width:560px;margin:0 auto;}
 }
 .site-header .wrap{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;max-width:1080px;}
 .brand{display:flex;align-items:center;gap:10px;font-family:"Shippori Mincho",serif;font-weight:700;font-size:17px;color:var(--ink);text-decoration:none;}
-.brand img.logo-mark{width:34px;height:34px;object-fit:contain;flex:none;}
+.brand img.logo-header{height:32px;width:auto;object-fit:contain;flex:none;}
 .brand small{display:block;font-family:"Zen Kaku Gothic New",sans-serif;font-size:10px;font-weight:500;color:var(--ink-soft);letter-spacing:.08em;}
 footer.site-footer .brand{justify-content:center;}
+footer.site-footer img.logo-footer{height:38px;width:auto;display:block;margin:0 auto 12px;}
+.cert-badge{width:170px;height:auto;display:block;margin:0 auto 22px;}
+.instructor-badge{width:56px;height:auto;display:inline-block;vertical-align:middle;margin-left:8px;}
 nav.main-nav{display:none;}
 nav.main-nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;}
 nav.main-nav a{font-size:13.5px;font-weight:700;text-decoration:none;color:var(--ink-soft);}
@@ -149,23 +154,29 @@ nav.main-nav a:hover{color:var(--rose-deep);}
 }
 .offer-card h3{margin:6px 0 0;font-size:18px;}
 .offer-card p{margin:0;font-size:14px;color:var(--ink-soft);}
-.offer-card .go{margin-top:auto;font-size:13px;font-weight:700;color:var(--rose-deep);text-decoration:underline;text-underline-offset:3px;}
+.offer-card .go{margin-top:auto;font-size:13px;font-weight:700;color:var(--rose-deep);text-decoration:underline;text-underline-offset:3px;transition:color .15s ease;}
+.offer-card:hover .go{color:var(--ink);}
 .offer-card.sub-links{gap:12px;}
 .offer-card .sub-link-row{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
 .offer-card .sub-link-row a{
   font-size:13px;font-weight:700;color:var(--rose-deep);text-decoration:none;
   border:1px solid var(--rose-soft);border-radius:100px;padding:8px 14px;text-align:center;
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
 }
-.offer-card .sub-link-row a:hover{background:var(--rose-soft);}
+.offer-card .sub-link-row a:hover{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep);}
 
 /* ---------- BUTTONS ---------- */
 .cta-btn{
-  position:relative;overflow:hidden;
+  position:relative;overflow:hidden;max-width:100%;
   display:inline-flex;flex-direction:column;align-items:center;gap:2px;
   background:var(--rose-deep);color:#fff;text-decoration:none;
   padding:16px 34px;border-radius:100px;font-weight:700;font-size:15.5px;
   box-shadow:0 10px 26px rgba(122,59,84,.32);
   transition:transform .18s ease, box-shadow .18s ease;
+  text-align:center;
+}
+@media (max-width:400px){
+  .cta-btn{padding:14px 20px;font-size:13.5px;}
 }
 .cta-btn:active{transform:scale(.98);}
 .cta-btn small{font-weight:500;font-size:11.5px;opacity:.85;letter-spacing:.03em;}
@@ -179,7 +190,9 @@ nav.main-nav a:hover{color:var(--rose-deep);}
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   padding:22px;display:flex;flex-direction:column;gap:8px;
   box-shadow:0 8px 20px rgba(122,59,84,.08);
+  transition:transform .15s ease, box-shadow .15s ease;
 }
+.item-card:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(122,59,84,.18);}
 .item-card h3{margin:2px 0 0;font-size:17px;}
 .item-card p{margin:0;font-size:13.5px;color:var(--ink-soft);}
 .badge{
@@ -188,7 +201,8 @@ nav.main-nav a:hover{color:var(--rose-deep);}
 }
 .badge.open{background:var(--sage-soft);color:#a9600f;}
 .badge.soon{background:var(--ivory-deep);color:var(--ink-soft);border:1px solid var(--line);}
-.item-card .item-link{margin-top:6px;font-size:13px;font-weight:700;color:var(--rose-deep);text-decoration:underline;text-underline-offset:3px;}
+.item-card .item-link{margin-top:6px;font-size:13px;font-weight:700;color:var(--rose-deep);text-decoration:underline;text-underline-offset:3px;transition:color .15s ease;}
+.item-card:hover .item-link{color:var(--ink);}
 .item-card .item-link.disabled{color:var(--ink-soft);pointer-events:none;}
 
 /* ---------- STEP LIST (体系立てた表示) ---------- */
