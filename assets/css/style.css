@@ -222,11 +222,6 @@ nav.main-nav a:hover{color:var(--rose-deep);}
   background:linear-gradient(135deg, var(--rose) 0%, var(--gold) 100%);
 }
 .contact-block{text-align:center;}
-.tag-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-.tag-row .tag{
-  background:var(--rose-soft);color:var(--rose-deep);font-size:13px;font-weight:700;
-  padding:7px 16px;border-radius:100px;white-space:nowrap;
-}
 
 /* ---------- STEP LIST (体系立てた表示) ---------- */
 .step-list{display:flex;flex-direction:column;max-width:640px;margin:0 auto;}
