@@ -205,6 +205,29 @@ nav.main-nav a:hover{color:var(--rose-deep);}
 .item-card:hover .item-link{color:var(--ink);}
 .item-card .item-link.disabled{color:var(--ink-soft);pointer-events:none;}
 
+/* ---------- INSTRUCTOR PROFILE BLOCKS ---------- */
+.profile-block{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 28px;box-shadow:0 8px 20px rgba(122,59,84,.06);
+}
+.profile-block + .profile-block{margin-top:20px;}
+.qualification-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+.qualification-list li{
+  display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--ink);
+  padding-bottom:12px;border-bottom:1px dashed var(--line);
+}
+.qualification-list li:last-child{border-bottom:none;padding-bottom:0;}
+.qualification-list li::before{
+  content:"";flex:none;width:8px;height:8px;margin-top:8px;border-radius:50%;
+  background:linear-gradient(135deg, var(--rose) 0%, var(--gold) 100%);
+}
+.contact-block{text-align:center;}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.tag-row .tag{
+  background:var(--rose-soft);color:var(--rose-deep);font-size:13px;font-weight:700;
+  padding:7px 16px;border-radius:100px;white-space:nowrap;
+}
+
 /* ---------- STEP LIST (体系立てた表示) ---------- */
 .step-list{display:flex;flex-direction:column;max-width:640px;margin:0 auto;}
 .step-item{display:flex;gap:18px;padding-bottom:28px;position:relative;}
@@ -235,6 +258,12 @@ nav.main-nav a:hover{color:var(--rose-deep);}
   border:1px solid var(--line);border-radius:100px;padding:5px 12px;
 }
 .sns-row a:hover{color:var(--rose-deep);border-color:var(--rose-soft);}
+.sns-row a.sns-icon{
+  width:38px;height:38px;padding:0;border:none;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:transform .15s ease;
+}
+.sns-row a.sns-icon:hover{transform:translateY(-2px);border-color:transparent;}
 
 /* ---------- COMING SOON PANEL ---------- */
 .coming-soon{
