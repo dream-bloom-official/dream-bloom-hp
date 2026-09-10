@@ -186,6 +186,14 @@ nav.main-nav a:hover{color:var(--rose-deep);}
 /* ---------- COURSE / INSTRUCTOR CARDS ---------- */
 .item-grid{display:grid;grid-template-columns:1fr;gap:16px;}
 @media (min-width:700px){.item-grid{grid-template-columns:1fr 1fr;}}
+#instructor-list{grid-template-columns:1fr 1fr;gap:10px;}
+@media (max-width:420px){
+  #instructor-list{gap:8px;}
+  #instructor-list .item-card{padding:16px 10px;}
+  #instructor-list .item-card h3{font-size:14.5px;}
+  #instructor-list .item-card p{font-size:11.5px;}
+  #instructor-list .item-link{font-size:12px;}
+}
 .item-card{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   padding:22px;display:flex;flex-direction:column;gap:8px;
