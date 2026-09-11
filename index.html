@@ -38,6 +38,14 @@
   </div>
 </section>
 
+<section class="section" id="news" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="eyebrow center" style="justify-content:center;display:flex;">News</div>
+    <h2 class="section-title">お知らせ</h2>
+    <div id="news-list" class="news-list"></div>
+  </div>
+</section>
+
 <section class="section" id="offers">
   <div class="wrap">
     <div class="eyebrow center" style="justify-content:center;display:flex;">Dream Bloomでできること</div>
@@ -100,6 +108,89 @@
     <small>&copy; Dream Bloom</small>
   </div>
 </footer>
+
+<script>
+/* ============================================================
+   お知らせ欄。Googleスプレッドシート（ウェブに公開したCSV）を
+   読み込んで自動表示する。更新はスプレッドシート側で行うだけでOK。
+   ============================================================ */
+(function(){
+  var CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLFiTyreKh_DyYDLOcm4AeRgrhbudWZnyskuw-_fm0R4IaePfZNVcab8NcKtAs2OIWDXAEZfZi-Nyq/pub?gid=0&single=true&output=csv";
+
+  function parseCSV(text){
+    var rows = [], row = [], field = "", inQuotes = false;
+    for (var i = 0; i < text.length; i++) {
+      var c = text[i];
+      if (inQuotes) {
+        if (c === '"') {
+          if (text[i+1] === '"') { field += '"'; i++; }
+          else { inQuotes = false; }
+        } else field += c;
+      } else {
+        if (c === '"') inQuotes = true;
+        else if (c === ',') { row.push(field); field = ""; }
+        else if (c === '\r') { /* skip */ }
+        else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ""; }
+        else field += c;
+      }
+    }
+    if (field.length || row.length) { row.push(field); rows.push(row); }
+    return rows;
+  }
+
+  function parseDate(s){
+    if (!s) return null;
+    s = s.trim();
+    var m = s.match(/^(\d{4})[\/\-.](\d{1,2})[\/\-.](\d{1,2})$/);
+    if (m) return new Date(+m[1], +m[2]-1, +m[3]);
+    var m2 = s.match(/^(\d{1,2})[\/\-.](\d{1,2})$/);
+    if (m2) { var now = new Date(); return new Date(now.getFullYear(), +m2[1]-1, +m2[2]); }
+    var d = new Date(s);
+    return isNaN(d) ? null : d;
+  }
+
+  function escapeHtml(s){
+    return (s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+
+  var listEl = document.getElementById("news-list");
+  if (!listEl) return;
+
+  fetch(CSV_URL).then(function(r){ return r.text(); }).then(function(text){
+    var rows = parseCSV(text.trim());
+    if (rows.length < 2) { listEl.closest("section").style.display = "none"; return; }
+    var header = rows[0];
+    var idx = {
+      date: header.indexOf("日付"),
+      title: header.indexOf("タイトル"),
+      body: header.indexOf("本文"),
+      link: header.indexOf("リンク")
+    };
+    var items = rows.slice(1).filter(function(r){ return r.length > 1 && r[idx.title]; }).map(function(r){
+      return {
+        date: r[idx.date] || "",
+        title: r[idx.title] || "",
+        body: r[idx.body] || "",
+        link: r[idx.link] || "",
+        _d: parseDate(r[idx.date])
+      };
+    });
+    items.sort(function(a,b){
+      if (a._d && b._d) return b._d - a._d;
+      if (a._d) return -1;
+      if (b._d) return 1;
+      return 0;
+    });
+    if (items.length === 0) { listEl.closest("section").style.display = "none"; return; }
+    listEl.innerHTML = items.map(function(it){
+      var linkHtml = it.link ? '<a class="news-link" href="' + escapeHtml(it.link) + '" target="_blank" rel="noopener">詳しくはこちら →</a>' : '';
+      return '<div class="news-item"><div class="news-date">' + escapeHtml(it.date) + '</div><h3>' + escapeHtml(it.title) + '</h3><p>' + escapeHtml(it.body) + '</p>' + linkHtml + '</div>';
+    }).join("");
+  }).catch(function(){
+    listEl.closest("section").style.display = "none";
+  });
+})();
+</script>
 
 </body>
 </html>
