@@ -163,39 +163,7 @@
 
     document.getElementById("hsp-check-btn").addEventListener("click", function(){
       var checked = quizEl.querySelectorAll('input[type="checkbox"]:checked').length;
-      renderResult(checked);
-    });
-  }
-
-  function renderResult(score){
-    var title, body;
-    if (score <= 2) {
-      title = "繊細さは控えめなタイプ";
-      body = "環境の変化にはわりと強く、比較的おおらかに過ごせるタイプかもしれません。とはいえ、状況によっては誰でも繊細になる瞬間があります。";
-    } else if (score <= 6) {
-      title = "繊細さを持ち合わせているタイプ";
-      body = "場面によって敏感さが出やすいタイプです。自分の心の状態に気づいて、うまく付き合っていくことで、より過ごしやすくなるかもしれません。";
-    } else {
-      title = "高い繊細さ（HSP傾向）を持っているタイプ";
-      body = "周りの刺激や人の気持ちを人一倍感じ取りやすい、HSP気質が強いタイプかもしれません。繊細さは、うまく付き合えば大きな強みにもなります。";
-    }
-
-    quizEl.innerHTML =
-      '<div class="hsp-result">' +
-        '<p style="font-weight:700;color:var(--rose-deep);margin:0 0 4px;">' + score + ' / ' + QUESTIONS.length + '個 当てはまりました</p>' +
-        '<h3 style="margin:0 0 12px;">' + title + '</h3>' +
-        '<p class="lead" style="margin:0 0 6px;">' + body + '</p>' +
-        '<p style="font-size:12px;color:var(--ink-soft);margin:0 0 20px;">※医学的な診断ではなく、簡易的な自己チェックです。</p>' +
-        '<div class="cta-row">' +
-          '<a class="cta-btn outline" style="color:var(--rose);border-color:var(--rose);" href="courses/index.html">HSPについてもっと深く知る</a>' +
-          '<a class="cta-btn outline" href="https://dream-bloom.netlify.app/" target="_blank" rel="noopener">繊細さを強みに変える</a>' +
-        '</div>' +
-        '<p style="margin-top:20px;"><a href="#" id="hsp-retry" style="font-size:13px;color:var(--ink-soft);text-decoration:underline;">もう一度チェックする</a></p>' +
-      '</div>';
-
-    document.getElementById("hsp-retry").addEventListener("click", function(e){
-      e.preventDefault();
-      renderQuiz();
+      window.location.href = "hsp-check/index.html?score=" + checked;
     });
   }
 })();

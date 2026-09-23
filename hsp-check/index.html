@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSPチェック結果 | Dream Bloom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="logo-header" src="../assets/img/logo-header.png" alt="Dream Bloom"></a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../courses/index.html">資格取得講座</a></li>
+        <li><a href="https://dream-bloom.netlify.app/" target="_blank" rel="noopener">オンラインサロン</a></li>
+        <li><a href="../index.html#marketing">マーケティング講座</a></li>
+        <li><a href="../instructors/index.html">Dream Bloom講師紹介</a></li>
+        <li><a href="../about/index.html">理念</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" onclick="this.closest('.site-header').classList.toggle('nav-open')" aria-label="メニューを開く">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18M3 12h18M3 18h18" stroke="#2E2A24" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;display:flex;">HSP Check</div>
+    <h1>あなたのHSPチェック結果</h1>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap" style="max-width:640px;">
+    <div id="hsp-result-area"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img class="logo-footer" src="../assets/img/logo-footer.png" alt="Dream Bloom"></a>
+    <div class="sns-row">
+      <a href="https://whnays3u.autosns.app/line" target="_blank" rel="noopener">公式LINE</a>
+      <a href="https://www.instagram.com/yukari_hsp?igsh=MWVzdm12b2xmYW96aA%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@yukari_hsp?_r=1&_t=ZS-98jpUmoWi17" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://youtube.com/@yukari_hsp?si=HbhXs6TEl4zDirAj" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <div class="sns-row" style="margin-top:2px;">
+      <a href="../legal/index.html#privacy">プライバシーポリシー</a>
+      <a href="../legal/index.html#tokushoho">特定商取引法に基づく表記</a>
+    </div>
+    <small>&copy; Dream Bloom</small>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var TOTAL = 10;
+  var params = new URLSearchParams(window.location.search);
+  var score = parseInt(params.get("score"), 10);
+  var area = document.getElementById("hsp-result-area");
+
+  if (isNaN(score) || score < 0 || score > TOTAL) {
+    area.innerHTML =
+      '<div class="hsp-result" style="text-align:center;">' +
+        '<p class="lead">チェック結果が見つかりませんでした。</p>' +
+        '<div class="cta-center" style="margin-top:16px;"><a class="cta-btn" href="../index.html#hsp-check">HSPチェックをする</a></div>' +
+      '</div>';
+    return;
+  }
+
+  var title, body;
+  if (score <= 2) {
+    title = "繊細さは控えめなタイプ";
+    body = "環境の変化にはわりと強く、比較的おおらかに過ごせるタイプかもしれません。とはいえ、状況によっては誰でも繊細になる瞬間があります。";
+  } else if (score <= 6) {
+    title = "繊細さを持ち合わせているタイプ";
+    body = "場面によって敏感さが出やすいタイプです。自分の心の状態に気づいて、うまく付き合っていくことで、より過ごしやすくなるかもしれません。";
+  } else {
+    title = "高い繊細さ（HSP傾向）を持っているタイプ";
+    body = "周りの刺激や人の気持ちを人一倍感じ取りやすい、HSP気質が強いタイプかもしれません。繊細さは、うまく付き合えば大きな強みにもなります。";
+  }
+
+  area.innerHTML =
+    '<div class="hsp-result">' +
+      '<p style="font-weight:700;color:var(--rose-deep);margin:0 0 4px;">' + score + ' / ' + TOTAL + '個 当てはまりました</p>' +
+      '<h3 style="margin:0 0 12px;">' + title + '</h3>' +
+      '<p class="lead" style="margin:0 0 6px;">' + body + '</p>' +
+      '<p style="font-size:12px;color:var(--ink-soft);margin:0 0 20px;">※医学的な診断ではなく、簡易的な自己チェックです。</p>' +
+      '<div class="cta-row">' +
+        '<a class="cta-btn outline" style="color:var(--rose);border-color:var(--rose);" href="../courses/index.html">HSPについてもっと深く知る</a>' +
+        '<a class="cta-btn outline" href="https://dream-bloom.netlify.app/" target="_blank" rel="noopener">繊細さを強みに変える</a>' +
+      '</div>' +
+      '<p style="margin-top:20px;"><a href="../index.html#hsp-check" style="font-size:13px;color:var(--ink-soft);text-decoration:underline;">もう一度チェックする</a></p>' +
+    '</div>';
+})();
+</script>
+
+</body>
+</html>
