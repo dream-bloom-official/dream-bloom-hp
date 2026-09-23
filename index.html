@@ -38,6 +38,15 @@
   </div>
 </section>
 
+<section class="hsp-check-banner" id="hsp-check">
+  <div class="wrap" style="max-width:640px;">
+    <p class="fsb-title">あなたはHSP気質？</p>
+    <p class="fsb-sub">10個の質問で、かんたんに繊細さの傾向をチェックできます</p>
+    <button type="button" class="cta-btn" id="hsp-toggle-btn">HSPチェックをしてみる</button>
+    <div id="hsp-quiz" class="hsp-quiz-panel" hidden></div>
+  </div>
+</section>
+
 <section class="section" id="news" style="padding-bottom:0;">
   <div class="wrap">
     <div class="eyebrow center" style="justify-content:center;display:flex;">News</div>
@@ -92,6 +101,14 @@
   </div>
 </section>
 
+<section class="free-session-banner">
+  <div class="wrap">
+    <p class="fsb-title">無料セッション、受付中</p>
+    <p class="fsb-sub">お申し込みいただいた上で、対応可能な講師がいる場合にご案内いたします。</p>
+    <a class="cta-btn" href="https://forms.gle/YPuujc5gDxKhMjMe9" target="_blank" rel="noopener">無料セッションに申し込む</a>
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="wrap">
     <a class="brand" href="index.html"><img class="logo-footer" src="assets/img/logo-footer.png" alt="Dream Bloom"></a>
@@ -108,6 +125,81 @@
     <small>&copy; Dream Bloom</small>
   </div>
 </footer>
+
+<script>
+/* ============================================================
+   かんたんHSPチェック。チェックした数に応じて結果を出し分ける。
+   ============================================================ */
+(function(){
+  var QUESTIONS = [
+    "大きな音や強い光、匂いなどの刺激に敏感に反応してしまう",
+    "人の些細な言動や表情の変化に、すぐ気づいてしまう",
+    "一度に多くのことを頼まれると、混乱してしまいやすい",
+    "他人の気分に影響されやすく、疲れてしまうことがある",
+    "静かな場所や、一人になれる時間が必要だと感じる",
+    "短時間で多くの情報を処理するのが苦手だと感じる",
+    "芸術や音楽に深く心を動かされることが多い",
+    "急な予定変更や、驚かされることが苦手で動揺しやすい",
+    "人に見られている、評価されていると感じると、実力を発揮しにくい",
+    "小さい頃から「敏感」「繊細」と言われることが多かった"
+  ];
+
+  var quizEl = document.getElementById("hsp-quiz");
+  var toggleBtn = document.getElementById("hsp-toggle-btn");
+  if (!quizEl || !toggleBtn) return;
+
+  toggleBtn.addEventListener("click", function(){
+    quizEl.hidden = false;
+    toggleBtn.style.display = "none";
+    renderQuiz();
+  });
+
+  function renderQuiz(){
+    quizEl.innerHTML =
+      QUESTIONS.map(function(q, i){
+        return '<label class="hsp-quiz-item"><input type="checkbox" data-hsp-idx="' + i + '"><span>' + q + '</span></label>';
+      }).join("") +
+      '<div class="cta-center" style="margin-top:24px;"><button type="button" class="cta-btn" id="hsp-check-btn">結果を見る</button></div>';
+
+    document.getElementById("hsp-check-btn").addEventListener("click", function(){
+      var checked = quizEl.querySelectorAll('input[type="checkbox"]:checked').length;
+      renderResult(checked);
+    });
+  }
+
+  function renderResult(score){
+    var title, body;
+    if (score <= 2) {
+      title = "繊細さは控えめなタイプ";
+      body = "環境の変化にはわりと強く、比較的おおらかに過ごせるタイプかもしれません。とはいえ、状況によっては誰でも繊細になる瞬間があります。";
+    } else if (score <= 6) {
+      title = "繊細さを持ち合わせているタイプ";
+      body = "場面によって敏感さが出やすいタイプです。自分の心の状態に気づいて、うまく付き合っていくことで、より過ごしやすくなるかもしれません。";
+    } else {
+      title = "高い繊細さ（HSP傾向）を持っているタイプ";
+      body = "周りの刺激や人の気持ちを人一倍感じ取りやすい、HSP気質が強いタイプかもしれません。繊細さは、うまく付き合えば大きな強みにもなります。";
+    }
+
+    quizEl.innerHTML =
+      '<div class="hsp-result">' +
+        '<p style="font-weight:700;color:var(--rose-deep);margin:0 0 4px;">' + score + ' / ' + QUESTIONS.length + '個 当てはまりました</p>' +
+        '<h3 style="margin:0 0 12px;">' + title + '</h3>' +
+        '<p class="lead" style="margin:0 0 6px;">' + body + '</p>' +
+        '<p style="font-size:12px;color:var(--ink-soft);margin:0 0 20px;">※医学的な診断ではなく、簡易的な自己チェックです。</p>' +
+        '<div class="cta-row">' +
+          '<a class="cta-btn outline" style="color:var(--rose);border-color:var(--rose);" href="courses/index.html">HSPについてもっと深く知る</a>' +
+          '<a class="cta-btn outline" href="https://dream-bloom.netlify.app/" target="_blank" rel="noopener">繊細さを強みに変える</a>' +
+        '</div>' +
+        '<p style="margin-top:20px;"><a href="#" id="hsp-retry" style="font-size:13px;color:var(--ink-soft);text-decoration:underline;">もう一度チェックする</a></p>' +
+      '</div>';
+
+    document.getElementById("hsp-retry").addEventListener("click", function(e){
+      e.preventDefault();
+      renderQuiz();
+    });
+  }
+})();
+</script>
 
 <script>
 /* ============================================================

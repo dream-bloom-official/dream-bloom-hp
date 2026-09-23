@@ -179,8 +179,10 @@ nav.main-nav a:hover{color:var(--rose-deep);}
   .cta-btn{padding:14px 20px;font-size:13.5px;}
 }
 .cta-btn:active{transform:scale(.98);}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(122,59,84,.4);}
 .cta-btn small{font-weight:500;font-size:11.5px;opacity:.85;letter-spacing:.03em;}
 .cta-btn.outline{background:#fff;color:var(--rose-deep);border:1.5px solid var(--rose-deep);box-shadow:none;}
+.cta-btn.outline:hover{background:var(--rose-soft);box-shadow:none;}
 .cta-center{text-align:center;margin-top:8px;display:flex;flex-direction:column;gap:12px;align-items:center;}
 
 /* ---------- COURSE / INSTRUCTOR CARDS ---------- */
@@ -231,8 +233,30 @@ nav.main-nav a:hover{color:var(--rose-deep);}
 }
 .contact-block{text-align:center;}
 
+/* ---------- HSP CHECK ---------- */
+.hsp-check-banner{background:var(--ivory-deep);padding:28px 0;text-align:center;}
+.hsp-check-banner .hsp-quiz-panel{max-width:560px;margin:24px auto 0;text-align:left;}
+.hsp-quiz-item{
+  display:flex;align-items:flex-start;gap:10px;padding:12px 0;
+  border-bottom:1px dashed var(--line);font-size:14px;cursor:pointer;
+}
+.hsp-quiz-item:last-of-type{border-bottom:none;}
+.hsp-quiz-item input[type="checkbox"]{margin-top:3px;flex:none;width:18px;height:18px;accent-color:var(--rose-deep);cursor:pointer;}
+.hsp-result{text-align:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;box-shadow:0 8px 20px rgba(122,59,84,.06);}
+.hsp-result .cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px;}
+
+/* ---------- FREE SESSION BANNER ---------- */
+.free-session-banner{background:var(--rose-soft);padding:28px 0;text-align:center;}
+.free-session-banner .fsb-title{
+  font-family:"Shippori Mincho",serif;font-weight:700;font-size:20px;color:var(--rose-deep);margin:0 0 8px;
+}
+.free-session-banner .fsb-sub{font-size:13px;color:var(--ink-soft);margin:0 0 18px;}
+
 /* ---------- NEWS ---------- */
-.news-list{display:flex;flex-direction:column;gap:14px;max-width:680px;margin:0 auto;}
+.news-list{
+  display:flex;flex-direction:column;gap:14px;max-width:680px;margin:0 auto;
+  max-height:340px;overflow-y:auto;padding:2px 6px 2px 2px;
+}
 .news-item{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   padding:20px 24px;box-shadow:0 8px 20px rgba(122,59,84,.06);
