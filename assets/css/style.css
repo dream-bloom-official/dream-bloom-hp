@@ -263,6 +263,7 @@ nav.main-nav a:hover{color:var(--rose-deep);}
 }
 .news-item .news-date{font-size:12px;font-weight:700;color:var(--rose-deep);margin-bottom:6px;}
 .news-item h3{margin:0 0 8px;font-size:16px;}
+.news-item .news-img{display:block;width:100%;max-width:480px;height:auto;max-height:220px;object-fit:cover;border-radius:10px;margin:0 0 10px;}
 .news-item p{margin:0;font-size:13.5px;color:var(--ink-soft);white-space:pre-line;}
 .news-item .news-link{
   display:inline-block;margin-top:8px;font-size:13px;font-weight:700;

@@ -213,6 +213,15 @@
     return (s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
   }
 
+  /* Googleドライブの共有リンクを、HPに表示できる画像URLに変換する */
+  function driveImage(u){
+    u = (u || "").trim();
+    if (!u) return "";
+    var m = u.match(/\/d\/([\w-]+)/) || u.match(/[?&]id=([\w-]+)/);
+    if (m) return "https://drive.google.com/thumbnail?id=" + m[1] + "&sz=w1000";
+    return /^https?:\/\//.test(u) ? u : "";
+  }
+
   var listEl = document.getElementById("news-list");
   if (!listEl) return;
 
@@ -224,7 +233,8 @@
       date: header.indexOf("日付"),
       title: header.indexOf("タイトル"),
       body: header.indexOf("本文"),
-      link: header.indexOf("リンク")
+      link: header.indexOf("リンク"),
+      image: header.indexOf("画像")
     };
     var items = rows.slice(1).filter(function(r){ return r.length > 1 && r[idx.title]; }).map(function(r){
       return {
@@ -232,6 +242,7 @@
         title: r[idx.title] || "",
         body: r[idx.body] || "",
         link: r[idx.link] || "",
+        image: idx.image >= 0 ? (r[idx.image] || "") : "",
         _d: parseDate(r[idx.date])
       };
     });
@@ -244,7 +255,9 @@
     if (items.length === 0) { listEl.closest("section").style.display = "none"; return; }
     listEl.innerHTML = items.map(function(it){
       var linkHtml = it.link ? '<a class="news-link" href="' + escapeHtml(it.link) + '" target="_blank" rel="noopener">詳しくはこちら →</a>' : '';
-      return '<div class="news-item"><div class="news-date">' + escapeHtml(it.date) + '</div><h3>' + escapeHtml(it.title) + '</h3><p>' + escapeHtml(it.body) + '</p>' + linkHtml + '</div>';
+      var imgUrl = driveImage(it.image);
+      var imgHtml = imgUrl ? '<img class="news-img" src="' + escapeHtml(imgUrl) + '" alt="' + escapeHtml(it.title) + '" loading="lazy">' : '';
+      return '<div class="news-item"><div class="news-date">' + escapeHtml(it.date) + '</div><h3>' + escapeHtml(it.title) + '</h3>' + imgHtml + '<p>' + escapeHtml(it.body) + '</p>' + linkHtml + '</div>';
     }).join("");
   }).catch(function(){
     listEl.closest("section").style.display = "none";
